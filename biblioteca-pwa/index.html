@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca Pessoal - PWA</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-256_ios.png">
+    <link rel="icon" href="/images/camera_256.png" sizes="256x256"/>
+    <meta name="theme-color" content="white"/>
+  </head>
+  <body>
+
+    <main id="camera">
+      <canvas id="camera--sensor"></canvas>
+      <video id="camera--view" autoplay playsinline></video>
+      <img src="//:0" alt="" id="camera--output">
+      <button id="camera--trigger">tirar foto</button>
+    </main>
+
+      <h2>Cadastrar Livro</h2>
+
+  <input id="titulo" placeholder="Título do livro"><br>
+  <input id="autor" placeholder="Autor"><br>
+
+  <select id="status">
+    <option value="Lendo">Lendo</option>
+    <option value="Concluído">Concluído</option>
+    <option value="Abandonado">Abandonado</option>
+  </select><br><br>
+
+  <button id="salvarLivro">Salvar Livro</button>
+
+  <h2>Minha Biblioteca</h2>
+  <div id="listaLivros"></div>
+
+    <div id="app"></div>
+    <script src="js/main.js" type="module"></script>
+  </body>
+</html>
