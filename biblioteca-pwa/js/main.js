@@ -1,24 +1,24 @@
 import { addLivro, getLivros, removeLivro } from "../db.js";
 
-// ---------------- SERVICE WORKER ----------------
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
       const reg = await navigator.serviceWorker.register("/sw.js", {
         type: "module",
       });
-      console.log("Service worker registrado! 😎", reg);
+      console.log("Service worker registrado! ", reg);
     } catch (err) {
-      console.log("💀 Erro ao registrar service worker:", err);
+      console.log(" Erro ao registrar service worker:", err);
     }
   });
 }
 
-// ---------------- CÂMERA ----------------
+
 
 const constraints = {
   video: {
-    facingMode: { ideal: "environment" }, // funciona em mais dispositivos
+    facingMode: { ideal: "environment" }, 
   },
   audio: false,
 };
@@ -36,7 +36,7 @@ function cameraStart() {
     .then((stream) => {
       cameraView.srcObject = stream;
 
-      // ESSENCIAL: garante que o vídeo carregou
+      
       cameraView.onloadedmetadata = () => {
         cameraView.play();
         console.log(
@@ -51,7 +51,7 @@ function cameraStart() {
     });
 }
 
-// Converte dataURL para Blob (método seguro)
+
 function dataURLtoBlob(dataURL) {
   const arr = dataURL.split(",");
   const mime = arr[0].match(/:(.*?);/)[1];
@@ -62,7 +62,7 @@ function dataURLtoBlob(dataURL) {
   return new Blob([u8arr], { type: mime });
 }
 
-// ---------------- BOTÃO DE TIRAR FOTO ----------------
+
 
 cameraTrigger.onclick = () => {
   if (!cameraView.videoWidth || !cameraView.videoHeight) {
@@ -85,7 +85,7 @@ cameraTrigger.onclick = () => {
   console.log("Foto capturada!", fotoCapturada);
 };
 
-// ---------------- SALVAR LIVRO ----------------
+
 
 document.getElementById("salvarLivro").onclick = async () => {
   const titulo = document.getElementById("titulo").value;
@@ -110,7 +110,7 @@ document.getElementById("salvarLivro").onclick = async () => {
   listarLivros();
 };
 
-// ---------------- LISTAR LIVROS ----------------
+
 
 async function listarLivros() {
   const livros = await getLivros();
@@ -138,7 +138,7 @@ window.excluir = async (id) => {
   listarLivros();
 };
 
-// ---------------- INICIAR APP ----------------
+
 
 window.addEventListener("load", () => {
   listarLivros();
